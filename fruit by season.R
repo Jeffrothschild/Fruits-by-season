@@ -32,11 +32,8 @@ theme_JR1 <- function(axis_lines = TRUE,
 
 ggplot2::theme_set(theme_JR1()) 
 
-month_order <- c("January", "February", "March", "April", "May", "June",
-                 "July", "August", "September", "October", "November", "December")
 
-
-current_month <- month.abb[month(now())]
+#   https://www.produce.co.nz/seasonality-chart/
 
 fruits <- tibble::tribble(
   ~ fruit,       ~start,      ~ end,
@@ -53,6 +50,26 @@ fruits <- tibble::tribble(
   "Plum",       "December",     "April"
 ) 
 
+
+fruit_colors <- c(
+  "Blueberry" = "#4F86F7",  # Blue
+  "Blackberry" = "#0B3D91", # Dark Blue
+  "Raspberry" = "#E30B5D",  # Raspberry Red
+  "Strawberry" = "#FC5A8D", # Strawberry Pink
+  "Feijoa" = "#98FB98",     # Pale Green
+  "Grapefruit" = "#FD7C6E", # Grapefruit Color
+  "Lemon" = "#e4d600",      # Bright Yellow
+  "Persimmon" = "#EC5800",  # Persimmon Orange
+  "Cherry" = "#B80058",     # Cherry Red
+  "Peach" = "#ffca68",      # Peach Color
+  "Plum" = "#8E4585"        # Plum Purple
+)
+
+month_order <- c("January", "February", "March", "April", "May", "June",
+                 "July", "August", "September", "October", "November", "December")
+
+
+current_month <- month.abb[month(now())]
 
 
 # Convert month names to numbers
@@ -74,19 +91,6 @@ expand_months <- function(fruit, start, end, start_month, end_month) {
 }
 
 
-fruit_colors <- c(
-  "Blueberry" = "#4F86F7",  # Blue
-  "Blackberry" = "#0B3D91", # Dark Blue
-  "Raspberry" = "#E30B5D",  # Raspberry Red
-  "Strawberry" = "#FC5A8D", # Strawberry Pink
-  "Feijoa" = "#98FB98",     # Pale Green
-  "Grapefruit" = "#FD7C6E", # Grapefruit Color
-  "Lemon" = "#e4d600",      # Bright Yellow
-  "Persimmon" = "#EC5800",  # Persimmon Orange
-  "Cherry" = "#B80058",     # Cherry Red
-  "Peach" = "#ffca68",      # Peach Color
-  "Plum" = "#8E4585"        # Plum Purple
-)
 # Expand the data
 expanded_data <- fruit_data %>%
   pmap_dfr(expand_months) %>% 
