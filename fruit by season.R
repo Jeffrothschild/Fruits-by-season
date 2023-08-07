@@ -52,8 +52,8 @@ fruits <- tibble::tribble(
 
 
 fruit_colors <- c(
-  "Blueberry" = "#4F86F7",  # Blue
-  "Blackberry" = "#0B3D91", # Dark Blue
+  "Blueberry" = "#0B3D91",  # Blue
+  "Blackberry" = "#44033A", # Dark Blue
   "Raspberry" = "#E30B5D",  # Raspberry Red
   "Strawberry" = "#FC5A8D", # Strawberry Pink
   "Feijoa" = "#98FB98",     # Pale Green
@@ -100,8 +100,8 @@ expanded_data <- fruit_data %>%
 # Reorder the factor levels in expanded_data
 expanded_data$fruit <- factor(expanded_data$fruit, #levels = rev(fruit_order))
                               levels = c("Strawberry", "Raspberry", "Cherry", "Persimmon",
-                                         "Grapefruit", "Peach", "Lemon", "Feijoa", "Blueberry",
-                                         "Blackberry", "Plum"))
+                                         "Grapefruit", "Peach", "Lemon", "Feijoa", "Plum", "Blueberry",
+                                          "Blackberry"))
 
 
 expanded_data %>%
